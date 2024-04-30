@@ -1,0 +1,9 @@
+#userLayout {
+  display: inline-flex;
+  width: 100%;
+  overflow: auto;
+}
+#app {
+  display: flex;
+  width: 100%;
+}
