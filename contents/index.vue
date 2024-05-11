@@ -1,5 +1,6 @@
 <script lang="ts">
 import cssText from "data-text:~/contents/index.css"
+import { ElButton } from "element-plus"
 import type {
   PlasmoCSConfig,
   PlasmoGetInlineAnchor,
@@ -7,7 +8,7 @@ import type {
   PlasmoMountShadowHost
 } from "plasmo"
 
-import "element-plus"
+import { sendToBackground } from "@plasmohq/messaging"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://saas.jishiyuchat.com/*"],
@@ -32,16 +33,29 @@ export default {
       count: 123456
     }
   },
+  components: { ElButton },
   plasmo: {
     mountShadowHost,
     getInlineAnchor,
     getStyle
   },
-  setup() {},
+  setup() {
+    async function refresh() {
+      await sendToBackground({
+        body: {
+          id: 123
+        },
+        name: "reFreshToken"
+      })
+    }
+    return {
+      refresh
+    }
+  },
   mounted() {}
 }
 </script>
 
 <template>
-  <div class="abc"></div>
+  <el-button class="abc" @click="refresh">刷新</el-button>
 </template>
