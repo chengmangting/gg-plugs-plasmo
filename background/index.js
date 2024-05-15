@@ -1,11 +1,5 @@
-import "~util/storage"
+import getTokens from "../util/getToken"
 
-// import getTokens from "../util/getToken"
+getTokens()
 
-console.log("this is background!")
-
-// getTokens()
-// chrome.tabs.query({ url: "http://test.xl.vertlet.com/*" }, (tabs) => {
-//   console.log("🚀 ~ chrome.tabs.query ~ tabs:", tabs)
-//   tabs[0]
-// })
+// 监听目标tab

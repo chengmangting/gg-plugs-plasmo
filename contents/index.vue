@@ -11,7 +11,7 @@ import type {
 import { sendToBackground } from "@plasmohq/messaging"
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://saas.jishiyuchat.com/*","https://www.baidu.com/* "],
+  matches: ["https://saas.jishiyuchat.com/*"],
   css: ["resetOrigin.css"]
 }
 const getStyle: PlasmoGetStyle = () => {
