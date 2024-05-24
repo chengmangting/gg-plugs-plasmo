@@ -12,11 +12,11 @@ import { sendToBackground } from "@plasmohq/messaging"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://saas.jishiyuchat.com/*"],
-  css: ["resetOrigin.css"]
+  css: ["resetOrigin.css"],
 }
 const getStyle: PlasmoGetStyle = () => {
   const style = document.createElement("style")
-  style.textContent = cssText
+  style.textContent = cssText.replaceAll(":root", ":host(plasmo-csui)")
   return style
 }
 
@@ -30,7 +30,7 @@ const mountShadowHost: PlasmoMountShadowHost = ({ anchor, shadowHost }) => {
 export default {
   data() {
     return {
-      count: 123456
+      
     }
   },
   components: { ElButton },
@@ -43,7 +43,7 @@ export default {
     async function refresh() {
       await sendToBackground({
         body: {
-          id: 123
+          type: "getToken"
         },
         name: "reFreshToken"
       })
@@ -57,5 +57,8 @@ export default {
 </script>
 
 <template>
-  <el-button class="abc" @click="refresh">刷新</el-button>
+  <div>
+    
+  </div>
 </template>
+ 

@@ -2,6 +2,6 @@
 module.exports = {
   mode: "jit",
   darkMode: "class",
-  content: ["./**/*.{vue,html,ts}"],
+  content: ["./**/*.{vue,html}"],
   plugins: []
 }

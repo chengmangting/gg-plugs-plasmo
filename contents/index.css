@@ -1,8 +1,9 @@
-/* @import "element-plus/dist/index.css"; */
-.abc {
-  width: 500px;
-  height: 100%;
-}
-.c-red {
-  color: red;
-}
+
+@import '../assets/css/common/base.css';
+@import '../assets/css/common/el-button.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
