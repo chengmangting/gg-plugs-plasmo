@@ -24,7 +24,11 @@ axios.interceptors.request.use(
 // 添加响应拦截器
 axios.interceptors.response.use(
   function (response) {
-    // 对响应数据做点什么
+    console.log('response',response)
+    // 对code为4的响应，清空token，让页面跳转到刷新页
+    if(response.code>400){
+      storage.set('token',null)
+    }
     return response
   },
   function (error) {
