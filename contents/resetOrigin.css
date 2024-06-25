@@ -3,15 +3,8 @@
   width: 100%;
   overflow: auto;
 }
+
 #app {
   display: flex;
   width: 100%;
-}
-#plasmo-shadow-container {
-  width: 200px;
-  background-color: purple;
-}
-
-#plasmo-mount-container {
-  border: 8px solid aqua;
 }

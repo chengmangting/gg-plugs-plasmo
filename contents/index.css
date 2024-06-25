@@ -1,9 +1,15 @@
-
-@import '../assets/css/common/base.css';
-@import '../assets/css/common/el-button.css';
+@import "../assets/css/common/base.css";
+@import "../assets/css/common/el-button.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
+#plasmo-shadow-container {
+  width: 30%;
+  min-width: 400px;
+  background-color:#fff;
+}
+#plasmo-mount-container {
+  border: 8px solid aqua;
+}

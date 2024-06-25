@@ -1,17 +1,23 @@
 import storage from "~util/storage"
 
 console.log("this is getToken.js")
-const env = process.env.NODE_ENV
-let domain =
-  env === "development" ? "http://test.xl.vertlet.com/*" : "http://toseek.net/*"
-export default function getTokens() {
+
+export default async function getTokens() {
+  console.log("getToken")
+  const domain = process.env.PLASMO_PUBLIC_DOMAIN
   return new Promise(function (resolve, reject) {
     chrome.tabs.query({ url: domain }, (tabs) => {
       console.log("🚀 ~ chrome.tabs.query ~ tabs:", tabs)
-      if(!tabs.length) return
+      storage.set("tabId", tabs.length? tabs[0].id : null)
+      if (!tabs.length) {
+        storage.set("tokens", null)
+        resolve(null)
+        return
+      }
+      const newTabId = tabs[0].id
       chrome.scripting.executeScript(
         {
-          target: { tabId: tabs[0].id },
+          target: { tabId: newTabId },
           func: function getLocalStrage() {
             console.log("🚀 ~ getLocalStrage ~ getLocalStrage:")
             return localStorage.getItem("Admin-Token")
@@ -19,8 +25,9 @@ export default function getTokens() {
         },
         (res) => {
           console.log("getLocalStrage", res)
-          storage.set("tokens", res.length && res[0].result)
-          resolve(res.result)
+          const result = res.length && res[0].result
+          storage.set("tokens", result)
+          resolve(result)
         }
       )
     })

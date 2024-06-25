@@ -2,9 +2,8 @@ import axios from "axios"
 
 import storage from "./storage"
 
-console.log("process.env", process.env)
 const instance = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: process.env.PLASMO_PUBLIC_BASE_URL,
   timeout: 1000,
   token: storage.get("token")
 })
